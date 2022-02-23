@@ -21,14 +21,14 @@
 <body class="home-newspro">
 
     <!-- preloader area start -->
-    <div class="preloader" id="preloader">
+<!--     <div class="preloader" id="preloader">
         <div class="preloader-inner">
             <div class="spinner">
                 <div class="dot1"></div>
                 <div class="dot2"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- search popup area start -->
     <!-- <div class="search-popup" id="search-popup">
         <form action="https://www.s7template.com/tf/newspro/home.html" class="search-form">
@@ -468,10 +468,27 @@
                         <h2 class="text-white">Subscribe For Newsletter</h2>
                         <p class="text-white">We're happy you decided to subscribe to our email list.
                             Please submit your email order to see new post released by Keza Magazine</p>
-                        <div class="footer-subscribe-inner">
-                            <input type="text" placeholder="Enter Email address">
-                            <button><i class="fa fa-paper-plane"></i></button>
-                        </div>
+                        <form action="https://sheetdb.io/api/v1/4n8t84r3qajkz" method="POST" id="sheetdb-subscribe" >
+                                <div class="footer-subscribe-inner">
+                                <input name="data[email]" type="text" placeholder="Enter Email address">
+                                <button><i class="fa fa-paper-plane"></i></button>
+                            </div>
+                            <script>
+                                var form = document.getElementById('sheetdb-subscribe');
+                                form.addEventListener("submit", e => {
+                                  e.preventDefault();
+                                  fetch(form.action, {
+                                      method : "POST",
+                                      body: new FormData(document.getElementById("sheetdb-subscribe")),
+                                  }).then(
+                                      response => response.json()
+                                  ).then((html) => {
+                                    // you can put any JS code here
+                                    alert('Thank you for subscribe to our email list.')
+                                  });
+                                });
+                              </script>
+                          </form>
                     </div>
                 </div>
             </div>
